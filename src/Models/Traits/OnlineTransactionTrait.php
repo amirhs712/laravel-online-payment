@@ -69,7 +69,7 @@ trait OnlineTransactionTrait
 
     public function setSuccessful($flag, $save = true): bool
     {
-        $this->accomplished = boolval($flag);
+        $this->accomplished = (bool)$flag;
 
         if ($save) {
             return $this->save();

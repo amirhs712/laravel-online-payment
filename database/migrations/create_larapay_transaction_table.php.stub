@@ -39,9 +39,9 @@ class CreateLarapayTransactionTable extends Migration
 
             $table->text('description')->nullable();
             $table->bigInteger('amount')->default(0);
-            $table->jsonb('extra_params')->nullable()->default('{}');
-            $table->jsonb('additional_data')->nullable()->default('{}');
-            $table->jsonb('sharing')->nullable()->default('{}');
+            $table->json('extra_params')->nullable();
+            $table->json('additional_data')->nullable();
+            $table->json('sharing')->nullable();
 
             $table->dateTime('paid_at')->nullable();
             $table->timestamps();

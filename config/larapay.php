@@ -2,6 +2,8 @@
 
 return [
 
+    'table_name' => env('LARAPAY_TABLE_NAME', 'larapay_transactions'),
+
     /*
     |--------------------------------------------------------------------------
     | Tartan e-payment component`s operation mode
@@ -14,7 +16,7 @@ return [
     | development: component operates with simulated "Bank Test" (banktest.ir) gateways
     |
     */
-    'mode'     => env('LARAPAY_MODE', 'production'),
+    'mode' => env('LARAPAY_MODE', 'production'),
 
     /*
     |--------------------------------------------------------------------------
@@ -34,9 +36,9 @@ return [
     | Mellat gateway configuration
     |--------------------------------------------------------------------------
     */
-    'mellat'   => [
-        'username'    => env('MELLAT_USERNAME', ''),
-        'password'    => env('MELLAT_PASSWORD', ''),
+    'mellat' => [
+        'username' => env('MELLAT_USERNAME', ''),
+        'password' => env('MELLAT_PASSWORD', ''),
         'terminal_id' => env('MELLAT_TERMINAL_ID', ''),
     ],
 
@@ -45,8 +47,8 @@ return [
     | Parsian gateway configuration
     |--------------------------------------------------------------------------
     */
-    'parsian'  => [
-        'pin'     => env('PARSIAN_PIN', ''),
+    'parsian' => [
+        'pin' => env('PARSIAN_PIN', ''),
         'timeout' => env('PARSIAN_TIMEOUT', 15),
 
     ],
@@ -56,8 +58,8 @@ return [
     |--------------------------------------------------------------------------
     */
     'pasargad' => [
-        'terminalId'       => env('PASARGAD_TERMINAL_ID', ''),
-        'merchantId'       => env('PASARGAD_MERCHANT_ID', ''),
+        'terminalId' => env('PASARGAD_TERMINAL_ID', ''),
+        'merchantId' => env('PASARGAD_MERCHANT_ID', ''),
         'certificate_path' => storage_path(env('PASARGAD_CERT_PATH', 'payment/pasargad/certificate.xml')),
     ],
 
@@ -66,10 +68,10 @@ return [
     | Sadad gateway configuration
     |--------------------------------------------------------------------------
     */
-    'sadad'    => [
-        'merchant'        => env('SADAD_MERCHANT', ''),
+    'sadad' => [
+        'merchant' => env('SADAD_MERCHANT', ''),
         'transaction_key' => env('SADAD_TRANS_KEY', ''),
-        'terminal_id'     => env('SADAD_TERMINAL_ID', ''),
+        'terminal_id' => env('SADAD_TERMINAL_ID', ''),
     ],
 
     /*
@@ -77,10 +79,10 @@ return [
     | Saderat - Mabna Card Aria gateway configuration
     |--------------------------------------------------------------------------
     */
-    'saderat'  => [
-        'MID'              => env('SADERAT_MID', ''),
-        'TID'              => env('SADERAT_TID', ''),
-        'public_key_path'  => storage_path(env('SADERAT_CERT_PATH', 'payment/saderat/public.key')),
+    'saderat' => [
+        'MID' => env('SADERAT_MID', ''),
+        'TID' => env('SADERAT_TID', ''),
+        'public_key_path' => storage_path(env('SADERAT_CERT_PATH', 'payment/saderat/public.key')),
         'private_key_path' => storage_path(env('SADERAT_CERT_PATH', 'payment/saderat/private.key')),
     ],
 
@@ -89,8 +91,8 @@ return [
     | Saman gateway configuration
     |--------------------------------------------------------------------------
     */
-    'saman'    => [
-        'merchant_id'   => env('SAMAN_MERCHANT_ID', ''),
+    'saman' => [
+        'merchant_id' => env('SAMAN_MERCHANT_ID', ''),
         'merchant_pass' => env('SAMAN_MERCHANT_PASS', ''),
     ],
 
@@ -104,13 +106,13 @@ return [
     |
     */
     'zarinpal' => [
-        'merchant_id'  => env('ZARINPAL_MERCHANT_ID', ''),
-        'type'         => env('ZARINPAL_TYPE', 'zarin-gate'),
+        'merchant_id' => env('ZARINPAL_MERCHANT_ID', ''),
+        'type' => env('ZARINPAL_TYPE', 'zarin-gate'),
         'callback_url' => env('ZARINPAL_CALLBACK_URL', ''),
-        'server'       => env('ZARINPAL_SERVER', 'germany'),
-        'email'        => env('ZARINPAL_EMAIL', ''),
-        'mobile'       => env('ZARINPAL_MOBILE', '09xxxxxxxxx'),
-        'description'  => env('ZARINPAL_DESCRIPTION', 'powered-by-Larapay'),
+        'server' => env('ZARINPAL_SERVER', 'germany'),
+        'email' => env('ZARINPAL_EMAIL', ''),
+        'mobile' => env('ZARINPAL_MOBILE', '09xxxxxxxxx'),
+        'description' => env('ZARINPAL_DESCRIPTION', 'powered-by-Larapay'),
     ],
 
     /*
@@ -130,15 +132,15 @@ return [
     | options: soapClient Options
     |
     */
-    'soap'   => [
+    'soap' => [
         'useOptions' => env('SOAP_HAS_OPTIONS', false),
-        'options'    => [
-            'proxy_host'     => env('SOAP_PROXY_HOST', ''),
-            'proxy_port'     => env('SOAP_PROXY_PORT', ''),
+        'options' => [
+            'proxy_host' => env('SOAP_PROXY_HOST', ''),
+            'proxy_port' => env('SOAP_PROXY_PORT', ''),
             'stream_context' => stream_context_create(
                 [
                     'ssl' => [
-                        'verify_peer'      => false,
+                        'verify_peer' => false,
                         'verify_peer_name' => false,
                     ],
                 ]
@@ -151,5 +153,5 @@ return [
     |--------------------------------------------------------------------------
     */
 
-    'payment_callback' => env('LARAPAY_PAYMENT_CALLBACK' , '')
+    'payment_callback' => env('LARAPAY_PAYMENT_CALLBACK', '')
 ];

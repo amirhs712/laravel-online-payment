@@ -17,8 +17,6 @@ class LarapayTransaction extends Model implements TransactionInterface
     use SoftDeletes;
     use OnlineTransactionTrait;
 
-    protected $table = 'larapay_transactions';
-
     protected $fillable = [
         'accomplished',
         'gate_name',
@@ -47,6 +45,11 @@ class LarapayTransaction extends Model implements TransactionInterface
         'paid_at',
     ];
 
+    public function getTable()
+    {
+        return config('larapay.table_name');
+    }
+
     public function model()
     {
         return $this->morphTo();
@@ -55,7 +58,7 @@ class LarapayTransaction extends Model implements TransactionInterface
     public function reverseTransaction()
     {
         //make payment gateway handler
-        $gatewayProperties     = json_decode($this->extra_params, true);
+        $gatewayProperties = json_decode($this->extra_params, true);
         $paymentGatewayHandler = Larapay::make($this->gate_name, $this, $gatewayProperties);
         //$paymentGatewayHandler->setParameters($gatewayProperties);
         //get reference id
@@ -96,22 +99,22 @@ class LarapayTransaction extends Model implements TransactionInterface
         $paymentGatewayHandler = $this->gatewayHandler($adapterConfig);
 
         $callbackRoute = route(config("larapay.payment_callback"), [
-            'gateway'        => $this->gate_name,
+            'gateway' => $this->gate_name,
             'transaction_id' => $this->id,
         ]);
 
         if ($callback != null) {
             $callbackRoute = route($callback, [
-                'gateway'        => $this->gate_name,
+                'gateway' => $this->gate_name,
                 'transaction_id' => $this->id,
             ]);
         }
 
         $paymentParams = [
-            'order_id'     => $this->getBankOrderId(),
+            'order_id' => $this->getBankOrderId(),
             'redirect_url' => $callbackRoute,
-            'amount'       => $this->amount,
-            'sharing'      => json_decode($this->sharing, true),
+            'amount' => $this->amount,
+            'sharing' => json_decode($this->sharing, true),
             'submit_label' => trans('larapay::larapay.goto_gate'),
         ];
 
@@ -136,22 +139,22 @@ class LarapayTransaction extends Model implements TransactionInterface
         $paymentGatewayHandler = $this->gatewayHandler($adapterConfig);
 
         $callbackRoute = route(config("larapay.payment_callback"), [
-            'gateway'        => $this->gate_name,
+            'gateway' => $this->gate_name,
             'transaction_id' => $this->id,
         ]);
 
         if ($callback != null) {
             $callbackRoute = route($callback, [
-                'gateway'        => $this->gate_name,
+                'gateway' => $this->gate_name,
                 'transaction_id' => $this->id,
             ]);
         }
 
         $paymentParams = [
-            'order_id'     => $this->getBankOrderId(),
+            'order_id' => $this->getBankOrderId(),
             'redirect_url' => $callbackRoute,
-            'amount'       => $this->amount,
-            'sharing'      => json_decode($this->sharing, true),
+            'amount' => $this->amount,
+            'sharing' => json_decode($this->sharing, true),
             'submit_label' => trans('larapay::larapay.goto_gate'),
         ];
 
