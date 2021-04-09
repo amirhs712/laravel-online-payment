@@ -1,17 +1,13 @@
 {
-	"name": "tartan/laravel-online-payment",
+	"name": "amirhs712/laravel-online-payment",
 	"description": "Iranian payment gateways handler for laravel applications",
 	"keywords": ["payment","shetab", "bank", "online payment", "gateway", "iran"],
 	"type": "library",
 	"license": "MIT",
 	"authors": [
 		{
-			"name": "Aboozar Ghaffari <Tartan>",
-			"email": "aboozar.ghf@gmail.com"
-		},
-		{
-			"name": "Milad Kianmehr",
-			"email": "milad.kian@gmail.com"
+			"name": "Amir Hossein Abdollahi",
+			"email": "amirhs712@gmail.com"
 		}
 	],
 	"require": {
